@@ -1,0 +1,40 @@
+# alert_rules.yml
+groups:
+- name: system-alerts
+  rules:
+  - alert: HighCpuUsage
+    expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High CPU usage on {{ $labels.instance }}"
+      description: "CPU usage is {{ $value }}% for more than 2 minutes."
+
+  - alert: HighMemoryUsage
+    expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 85
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High Memory usage on {{ $labels.instance }}"
+      description: "Memory usage is {{ $value }}% for more than 2 minutes."
+
+  - alert: MyAppDown
+    expr: probe_success{job="my-app-monitor"} == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "My App is down"
+      description: "HTTP probe failed for my-app. Service is unreachable."
+
+  - alert: ContainerRestarted
+    expr: changes(container_start_time_seconds{container!="POD", container!=""}[5m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Container restarted: {{ $labels.container }} on {{ $labels.pod }} (namespace: {{ $labels.namespace }})"
+      description: >
+        Container `{{ $labels.container }}` in pod `{{ $labels.pod }}` (namespace: `{{ $labels.namespace }}`) was restarted in the last 5 minutes. This may indicate instability or crash-looping.

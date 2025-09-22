@@ -1,0 +1,9 @@
+{
+    "name": "monitored-app",
+    "version": "1.0.0",
+    "description": "Simple app to monitor with Prometheus + Grafana",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    }
+}

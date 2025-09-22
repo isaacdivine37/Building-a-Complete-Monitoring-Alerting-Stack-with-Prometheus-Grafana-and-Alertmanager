@@ -1,0 +1,16 @@
+# alertmanager.yml
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'isaacdivine37@gmail.com' # ← REPLACE
+  smtp_auth_username: 'isaacdivine37@gmail.com' # ← REPLACE
+  smtp_auth_password: 'ylvspsrshfblaudz' # ← REPLACE
+  smtp_require_tls: true
+
+route:
+  receiver: 'email-notifications'
+
+receivers:
+- name: 'email-notifications'
+  email_configs:
+  - to: 'isaacdivine37@gmail.com' # ← REPLACE
+    send_resolved: true

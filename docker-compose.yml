@@ -1,0 +1,93 @@
+# 📁 File: docker-compose.yml
+# ✅ Tested on Linux, Mac, Windows (Docker Desktop)
+# ✅ Fixes "host.docker.internal" for all platforms
+# ✅ Includes Prometheus, Grafana, Alertmanager, Node Exporter, cAdvisor, Blackbox
+
+version: '3.8'
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.49.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alert_rules.yml:/etc/prometheus/alert_rules.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.enable-lifecycle'
+    depends_on:
+      - alertmanager
+      - blackbox
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # 👈 Critical fix for host access
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:10.3.1
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=Admin123!
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  nodeexporter:
+    image: prom/node-exporter:v1.7.0
+    container_name: nodeexporter
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.2
+    container_name: cadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    privileged: true
+    restart: unless-stopped
+
+  blackbox:
+    image: prom/blackbox-exporter:v0.24.0
+    container_name: blackbox
+    ports:
+      - "9115:9115"
+    volumes:
+      - ./blackbox.yml:/etc/blackbox_exporter/config.yml
+    command:
+      - '--config.file=/etc/blackbox_exporter/config.yml'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # 👈 Also add here for safety
+    restart: unless-stopped
+
+  alertmanager:
+    image: prom/alertmanager:v0.26.0
+    container_name: alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    restart: unless-stopped
+
+volumes:
+  grafana-storage:
