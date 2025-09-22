@@ -1,17 +1,10 @@
 # Complete Monitoring and Alerting Stack with Prometheus, Grafana, and Alertmanager
+For more detailed guidline on how to go about this: refer back to my blog : https://isaacdivine37.hashnode.dev/building-a-complete-monitoring-and-alerting-stack-with-prometheus-grafana-and-alertmanager
 
-Perfect for **DevOps, SRE, or Cloud Engineers** — Includes a real app to monitor, alerts, Docker setup, and Grafana dashboards.  
-**100% reproducible with Docker Compose** — No broken videos, no outdated configs.  
+<img width="3840" height="967" alt="mssq" src="https://github.com/user-attachments/assets/45bf68b4-9ecb-47cc-af34-22820dcd13c7" />
 
----
 
-## 👋 Introduction
-As someone diving into DevOps or Site Reliability Engineering (SRE), you quickly realize:  
-**“If you can’t monitor it, you can’t manage it.”**
-
-Most tutorials stop at installing Prometheus and Grafana… but they never explain **what to monitor** or **how to get real alerts**.  
-
-This project solves that. You’ll build a **complete, production-inspired monitoring stack** from scratch that includes:  
+ In this demo ,you’ll build a **complete, production-inspired monitoring stack** from scratch that includes:  
 - ✅ A sample web application (Node.js) to monitor  
 - ✅ Infrastructure metrics (CPU, RAM, Disk, Network)  
 - ✅ Docker container resource usage with cAdvisor  
@@ -47,7 +40,9 @@ prometheus-grafana-alerts-stack/
 Clone this repository and spin up the stack:
 
 git clone https://github.com/<your-username>/prometheus-grafana-alerts-stack.git
+
 cd prometheus-grafana-alerts-stack
+
 docker-compose up -d
 
 🌐 Accessing the Stack
