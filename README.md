@@ -1,196 +1,126 @@
-# Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager
-✨ Features
-✅ Real Application Monitoring — Sample Node.js app included
-✅ Infrastructure Metrics — CPU, RAM, Disk, Network via Node Exporter
-✅ Docker Container Metrics — Resource usage per container via cAdvisor
-✅ HTTP Uptime Monitoring — Blackbox Exporter checks app health
-✅ Real Email Alerts — Configured via Gmail (App Password)
-✅ Beautiful Grafana Dashboards — Industry-standard IDs imported with 1 click
-✅ 100% Reproducible — Single docker-compose up command
-✅ Zero Broken Configs — All files included, tested, and version-pinned
+# Complete Monitoring and Alerting Stack with Prometheus, Grafana, and Alertmanager
 
-📦 Stack Components
-COMPONENT
-PURPOSE
-PORT
-Prometheus
-Metrics collection & alert evaluation
-9090
-Grafana
-Visualization dashboards
-3000
-Alertmanager
-Alert routing & email notifications
-9093
-Node Exporter
-Host system metrics (CPU, RAM, Disk, etc.)
-9100
-cAdvisor
-Docker container resource usage
-8080
-Blackbox Exporter
-HTTP uptime & response probing
-9115
-Sample Node.js App
-Monitored target application
-3001
+Perfect for **DevOps, SRE, or Cloud Engineers** — Includes a real app to monitor, alerts, Docker setup, and Grafana dashboards.  
+**100% reproducible with Docker Compose** — No broken videos, no outdated configs.  
 
-⚙️ Prerequisites
-Docker + Docker Compose installed
-Docker Desktop (Windows/Mac)
-Docker Engine (Linux)
-Gmail account with 2-Step Verification enabled (for email alerts)
-Verify installation:
+---
 
-bash
+## 👋 Introduction
+As someone diving into DevOps or Site Reliability Engineering (SRE), you quickly realize:  
+**“If you can’t monitor it, you can’t manage it.”**
 
+Most tutorials stop at installing Prometheus and Grafana… but they never explain **what to monitor** or **how to get real alerts**.  
 
-1
-2
-docker --version
-docker-compose --version
-🚀 Quick Start
-1. Clone & Navigate
-bash
+This project solves that. You’ll build a **complete, production-inspired monitoring stack** from scratch that includes:  
+- ✅ A sample web application (Node.js) to monitor  
+- ✅ Infrastructure metrics (CPU, RAM, Disk, Network)  
+- ✅ Docker container resource usage with cAdvisor  
+- ✅ HTTP uptime monitoring with Blackbox Exporter  
+- ✅ Real-time **email alerts** via Alertmanager  
+- ✅ Beautiful Grafana dashboards (industry-standard IDs)  
+- ✅ All deployed with **Docker Compose** (portable & reproducible)  
 
+---
 
-1
-2
-git clone https://github.com/your-username/prometheus-grafana-alerts-stack.git
+## 🛠️ Prerequisites
+- Docker + Docker Compose installed  
+  - [Docker Desktop](https://docs.docker.com/desktop/) (Windows/Mac)  
+  - [Docker Engine](https://docs.docker.com/engine/install/) (Linux)  
+- Verify installation:
+  ```bash
+  docker --version
+  docker-compose --version
+
+  📂 Project Structure
+prometheus-grafana-alerts-stack/
+│── app.js                # Simple Node.js app to monitor
+│── package.json           # App metadata
+│── Dockerfile             # App container definition
+│── docker-compose.yml     # Full monitoring stack
+│── prometheus.yml         # Prometheus config
+│── alert_rules.yml        # Alerting rules
+│── alertmanager.yml       # Email alert config
+│── blackbox.yml           # HTTP monitoring config
+
+🚀 Setup & Run
+
+Clone this repository and spin up the stack:
+
+git clone https://github.com/<your-username>/prometheus-grafana-alerts-stack.git
 cd prometheus-grafana-alerts-stack
-💡 Replace your-username with your actual GitHub username after uploading. 
-
-2. Configure Alertmanager (Optional but Recommended)
-Edit alertmanager.yml and replace:
-
-yaml
-
-
-1
-2
-3
-4
-smtp_from: 'your-email@gmail.com'
-smtp_auth_username: 'your-email@gmail.com'
-smtp_auth_password: 'your-16-digit-app-password'
-to: 'your-email@gmail.com'
-🔐 Get Gmail App Password:
-Go to https://myaccount.google.com/apppasswords → Create “Mail” app password → Paste 16-digit code. 
-
-3. Start the Stack
-bash
-
-
-1
 docker-compose up -d
-Wait 30-60 seconds for all services to initialize.
 
-🔍 Access & Verify
-SERVICE
-URL
-CREDENTIALS (IF ANY)
-Prometheus
-http://localhost:9090
-—
-Grafana
-http://localhost:3000
-admin
-/
-Admin123!
-Alertmanager
-http://localhost:9093
-—
-cAdvisor
-http://localhost:8080
-—
-Your App
-http://localhost:3001
-—
+🌐 Accessing the Stack
 
-✅ Check Targets: http://localhost:9090/targets — all should be UP
+App (Node.js): http://localhost:3001
 
-📊 Import Grafana Dashboards
-After logging into Grafana (admin / Admin123!):
+Prometheus: http://localhost:9090
 
-Click + → Import on the left sidebar
-Enter Dashboard ID → Load → Select “Prometheus” as data source
-ID
-DASHBOARD NAME
-PURPOSE
-1860
-Node Exporter Full
-Host system metrics
-14282
-Docker & Containers
-Container resource usage
-7587
-Blackbox Exporter Status
-HTTP probe & uptime monitoring
+Grafana: http://localhost:3000
+ (user: admin, pass: Admin123!)
 
-🚨 Test Alerts
-Trigger an Alert
-bash
+Alertmanager: http://localhost:9093
 
+📊 Dashboards
 
-1
+Import these Grafana dashboard IDs:
+
+1860 → Node Exporter Full (Host Metrics)
+
+14282 → Docker & Containers
+
+7587 → Blackbox Exporter (HTTP Probes)
+
+📢 Alerts
+
+Prometheus evaluates rules from alert_rules.yml, including:
+
+🔥 High CPU usage (> 80%)
+
+🔥 High memory usage (> 85%)
+
+🚨 Application down (via Blackbox probe)
+
+⚠️ Container restarted unexpectedly
+
+Alerts are routed via Alertmanager. Email notifications are configured in alertmanager.yml.
+
+🧪 Testing Alerts
+
+Stop the app:
+
 docker stop my-app
-➡️ Wait 60 seconds → Check http://localhost:9090/alerts → MyAppDown should be FIRING
-📬 You’ll receive an email alert within 1-2 minutes!
-
-Resolve the Alert
-bash
 
 
-1
-docker start my-app
-➡️ Wait 60 seconds → Alert auto-resolves → You’ll get a resolved email!
-
-🧹 Cleanup
-Stop and remove containers:
-
-bash
-
-
-1
-2
-docker-compose down
-docker rm -f my-app
-Remove built image:
-
-bash
-
-
-1
-docker rmi my-monitored-app
-Optional: Clean up Grafana volume
-
-bash
-
-
-1
-docker volume prune
-📁 Project Structure
-
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
+Within 60s, check Prometheus alerts at http://localhost:9090/alerts
 .
-├── app.js                     # Sample Node.js app to monitor
-├── package.json               # App metadata & dependencies
-├── Dockerfile                 # Builds the sample app
-├── docker-compose.yml         # Defines all monitoring services
-├── prometheus.yml             # Prometheus scrape config
-├── alert_rules.yml            # Alerting rules (CPU, RAM, App Down, etc.)
-├── alertmanager.yml           # Email alert config (Gmail)
-├── blackbox.yml               # HTTP probe config
-└── README.md                  # You are here!
-🛡️ Security Note
-This setup uses hardcoded credentials and open ports for local development and learning purposes only.
+
+You’ll also receive an email notification if SMTP is configured.
+
+Restart the app:
+
+docker start my-app
+
+⚠️ Common Errors
+
+Prometheus won’t start → run promtool check config prometheus.yml
+
+Grafana shows "No Data" → check Prometheus targets at http://localhost:9090/targets
+
+Alerts not firing → verify alert_rules.yml and Alertmanager config
+
+Email alerts failing → confirm Gmail App Password & allow “Less secure apps”
+
+📚 References
+
+Prometheus Docs
+
+Grafana Docs
+
+Alertmanager Docs
+
+📜 License
+
+This project is open source under the MIT License
+.
+
